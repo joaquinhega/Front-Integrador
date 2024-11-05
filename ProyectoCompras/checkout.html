@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZZENCIAL - Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333333;
+            background-color: #638685;
+        }
+
+        /* Encabezado */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #eeeeee;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #5951c9;
+            text-decoration: none;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            color: #ffffff;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: #555;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #007bff;
+        }
+
+        /* Contenedor de checkout */
+        .checkout-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 149, 255, 0.3);
+            padding: 20px;
+            margin: 20px auto; /* Centrar el contenedor */
+        }
+
+        h1 {
+            color: #5951c9;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .product-list {
+            margin-bottom: 20px;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item p {
+            margin: 0;
+        }
+
+        .coupon-input, .address-input, .campo-entrada, .boton-comprar {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .boton-comprar {
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .boton-comprar:hover {
+            background-color: #0056b3;
+        }
+
+        #totalPrice, #discountPrice, #couponApplied {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+         /* Sección de contacto */
+         .contacto {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .contacto h2 {
+            margin-bottom: 20px;
+        }
+
+        .contacto p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Pie de página */
+        .footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar {
+                flex-direction: column;
+                width: 100%;
+                align-items: flex-start;
+            }
+
+            .navbar a {
+                margin: 10px 0;
+            }
+
+            h1 {
+                font-size: 20px; /* Tamaño de fuente adaptable */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <a href="Menu.html" class="logo">EZZENCIAL</a>
+        <nav class="navbar">
+            <a href="Menu.html">Inicio</a>
+            <a href="catalogo.html">Productos</a>
+            <a href="#contacto">Contacto</a>
+            <a href="login.html" class="navbar-icon"><i class="fas fa-user"></i></a>
+            <a href="checkout.html" class="navbar-icon"><i class="fas fa-shopping-cart"></i></a>
+        </nav>
+    </header>
+
+    <!-- Contenedor de checkout -->
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        <div class="product-list" id="productList">
+            <!-- Productos del carrito se cargarán aquí -->
+        </div>
+
+        <input type="text" class="coupon-input" placeholder="Ingresar cupón" id="couponCode">
+        <button id="applyCoupon" class="boton-comprar">Aplicar Cupón</button>
+
+        <h2>Dirección de Envío</h2>
+        <input type="text" class="address-input" placeholder="Ingresar dirección" id="address">
+
+        <h2>Detalles de Pago</h2>
+        <input type="text" class="campo-entrada" placeholder="Número de tarjeta" id="cardNumber">
+        <input type="text" class="campo-entrada" placeholder="mm/aa" id="expiryDate" maxlength="5" oninput="formatExpiry(this)">
+        <input type="text" class="campo-entrada" placeholder="CVC" id="cvc">
+        <input type="text" class="campo-entrada" placeholder="DNI" id="dni">
+
+        <div id="totalPrice"></div>
+        <div id="discountPrice"></div>
+        <div id="couponApplied"></div>
+
+        <button class="boton-comprar" id="completePurchase">Comprar</button>
+    </div>
+
+    <!-- Sección de contacto -->
+    <section id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <p>¿Tienes alguna consulta? Contáctanos.</p>
+        <a href="mailto:ezencial@gmail.com" class="btn">Escríbenos</a>
+    </section>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

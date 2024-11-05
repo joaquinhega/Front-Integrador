@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - EZZENCIAL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #638685;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #eeeeee;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #5951c9;
+            text-decoration: none;
+        }
+
+        .navbar a {
+            margin-left: 20px;
+            color: #555;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #007bff;
+        }
+
+        .productos {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .productos h2 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .search-sort {
+            display: flex;
+            justify-content: center; 
+            margin-bottom: 20px; 
+            gap: 10px; 
+        }
+
+        #search {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none; 
+            transition: border-color 0.3s;
+        }
+
+        #search:focus {
+            border-color: #007bff;
+        }
+
+        #sort {
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none; 
+            background-color: #ffffff;
+            transition: border-color 0.3s;
+        }
+
+        #sort:focus {
+            border-color: #007bff; 
+        }
+
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            width: 250px;
+            transition: transform 0.2s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            color: #ffffff;
+            background-color: #007bff;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+            .navbar a {
+                margin: 10px 0;
+            }
+
+            .product-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .productos h2 {
+                font-size: 2em;
+            }
+        }
+
+        .contacto {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .contacto h2 {
+            margin-bottom: 20px;
+        }
+
+        .contacto p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <a href="Menu.html" class="logo">EZZENCIAL</a>
+        <nav class="navbar">
+            <a href="Menu.html">Inicio</a>
+            <a href="#contacto">Contacto</a>
+            <a href="login.html" class="navbar-icon"><i class="fas fa-user"></i></a>
+            <a href="checkout.html" class="navbar-icon"><i class="fas fa-shopping-cart"></i></a>
+        </nav>
+    </header>
+
+    <!--Productos -->
+    <section class="productos">
+        <h2>Nuestros Productos</h2>
+        <div class="search-sort">
+            <input type="text" id="search" placeholder="Buscar productos...">
+            <select id="sort">
+                <option value="name">Ordenar por Nombre</option>
+                <option value="price">Ordenar por Precio</option>
+                <option value="popularity">Ordenar por Popularidad</option>
+            </select>
+        </div>
+        <div class="product-grid" id="product-container">
+            <!-- Productos se cargan aqui -->
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <p>¿Tienes alguna consulta? Contáctanos.</p>
+        <a href="mailto:ezencial@gmail.com" class="btn">Escríbenos</a>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 EZZENCIAL - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="js/catalogo.js"></script>
+</body>
+</html>

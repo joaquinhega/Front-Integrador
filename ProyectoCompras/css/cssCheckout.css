@@ -1,0 +1,96 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #638685; /* Color de fondo acorde a la página principal */
+}
+
+.contenedor-checkout {
+    width: 90%;
+    max-width: 400px;
+    background-color: #ffffff; /* Fondo blanco para resaltar contenido */
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(31, 149, 255, 0.3);
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 150px;
+    background-color: #2d3748; /* Color de fondo para la imagen del producto */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    color: #8892b0; /* Color de texto para la imagen del producto */
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-producto p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #64ffda; /* Color de texto para descripción y precio */
+}
+
+.campo-entrada, .boton-validar, .boton-comprar {
+    width: 100%; /* Ajusta el ancho para que ocupen todo el contenedor */
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    font-size: 1em;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.campo-entrada {
+    background-color: #2d3748; /* Color de fondo para campos de entrada */
+    border: 2px solid #4a5568;
+    color: #ffffff; /* Color de texto en los campos */
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.1);
+}
+
+.campo-entrada:focus {
+    border-color: #64ffda; /* Color del borde al enfocar */
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+}
+
+.boton-validar {
+    background: linear-gradient(135deg, #0066ff, #00ffff);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.boton-comprar {
+    background: linear-gradient(135deg, #00ff87, #60efff);
+    border: none;
+    color: #0a192f;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detalles-tarjeta {
+    display: flex;
+    gap: 15px;
+}
+
+.detalles-tarjeta input {
+    flex: 1;
+    text-align: center;
+    border: 2px solid #4a5568; /* Color de borde de los campos de tarjeta */
+    background-color: #2d3748; /* Color de fondo de los campos de tarjeta */
+    color: #ffffff; /* Color de texto en los campos de tarjeta */
+}
